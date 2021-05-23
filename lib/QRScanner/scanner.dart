@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:elaborato/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'button_widget.dart';
+import 'package:http/http.dart' as http;
 
 import '../main.dart';
 
@@ -13,6 +16,39 @@ class Scanner extends StatefulWidget {
 
 class _ScannerState extends State<Scanner> {
   String qrCode = 'Unknown';
+
+  verifyToken(String token) async {
+    print(token);
+    var _uri = Uri.https('api.elaboratomacchinette.it', '/verify');
+    print(_uri);
+    var jsonData = null;
+    var response = await http.get(_uri, headers: {"token": token});
+
+    if (response.statusCode == 200) {
+      jsonData = json.decode(response.body);
+      print(jsonData);
+      try {
+        //starta il pagamento
+      } on Exception catch (e) {
+        print("Errore");
+      }
+
+      showVerifyResult(response.body);
+      return true;
+    } else {
+      print(response.body);
+      showVerifyResult(response.body);
+      return false;
+    }
+  }
+
+  showVerifyResult(String result) async {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: Text(result),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -46,8 +82,8 @@ class _ScannerState extends State<Scanner> {
         // ),
         toolbarHeight: 70,
       ),
-      body: qrCode == 'Unknown' or '-1'
-      // firstUse == true
+      body: qrCode == 'Unknown' || qrCode == '-1'
+          // firstUse == true
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +95,9 @@ class _ScannerState extends State<Scanner> {
                 ],
               ),
             )
-          : Center(
+          :
+          // verifyToken(qrCode)
+          Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

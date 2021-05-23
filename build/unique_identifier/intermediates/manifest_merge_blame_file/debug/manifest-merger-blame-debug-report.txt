@@ -3,6 +3,6 @@
 3    package="altercode.xyz.uniqueidentifier" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->/home/ricky/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/unique_identifier-0.0.3/android/src/main/AndroidManifest.xml
+5-->G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\unique_identifier-0.0.3\android\src\main\AndroidManifest.xml
 6
 7</manifest>
