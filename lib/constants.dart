@@ -36,6 +36,4 @@ final kBoxDecorationStyle = BoxDecoration(
   ],
 );
 
-var camera = null;
-
 var firstUse = true;

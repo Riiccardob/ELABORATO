@@ -1,40 +1,12 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:ffi';
-import 'dart:io';
-
 import 'package:elaborato/bottomBar/my_bottom_nav_bar.dart';
 import 'package:elaborato/constants.dart';
-import 'package:elaborato/payments/PaypalPayment.dart';
 import 'package:elaborato/token/cartPage.dart';
 import 'package:elaborato/token/tokenData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'button_widget.dart';
-import 'package:http/http.dart' as http;
-import 'package:jwt_decode/jwt_decode.dart';
-
-import '../main.dart';
-
-// class Product {
-//   String name;
-//   String price;
-//   String quantity;
-
-//   Product(String name, String price, String quantity) {
-//     this.name = name;
-//     this.price = price;
-//     this.quantity = quantity;
-//   }
-
-//   buildTitle(String name) {}
-
-//   buildSubtitle(String s) {}
-// }
-
-// List<Product> chart = [];
-// List<Widget> widChart = [];
 
 class Scanner extends StatefulWidget {
   @override
@@ -43,6 +15,10 @@ class Scanner extends StatefulWidget {
 
 class _ScannerState extends State<Scanner> {
   String qrCode = 'Unknown';
+
+  void setQRCode(String qrCode) {
+    this.qrCode = qrCode;
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -120,9 +96,6 @@ class _ScannerState extends State<Scanner> {
 
       if (!mounted) return;
 
-      setState(() {
-        this.qrCode = qrCode;
-      });
       verifyToken(qrCode, context);
     } on PlatformException {
       qrCode = 'Failed to get platform version.';

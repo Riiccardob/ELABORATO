@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:elaborato/SignIn-Up/login_screen.dart';
 import 'package:elaborato/bottomBar/my_bottom_nav_bar.dart';
 import 'package:elaborato/constants.dart';
 import 'package:elaborato/payments/PaypalPayment.dart';
@@ -146,71 +147,7 @@ class _cartPageState extends State<cartPage> {
                                           );
                                           print("Mi stanno premendo");
                                         },
-                                        // onClicked: () {
-                                        //   Navigator.of(context).push(
-                                        //     MaterialPageRoute(
-                                        //       builder: (BuildContext context) =>
-                                        //           PaypalPayment(
-                                        //         onFinish: (number) async {
-                                        //           // payment done
-                                        //           print('order id: ' + number);
-                                        //         },
-                                        //       ),
-                                        //     ),
-                                        //   );
-                                        //   print("Mi stanno premendo");
-                                        // }),
-                                      )
-                                      // ButtonWidget(
-                                      //   text: 'Paga con Paypal',
-                                      //   onClicked: () async {
-                                      //     var request = BraintreeDropInRequest(
-                                      //       tokenizationKey:
-                                      //           'sandbox_zjjwn98v_tn2v29fw3my4hb79',
-                                      //       collectDeviceData: true,
-                                      //       paypalRequest:
-                                      //           BraintreePayPalRequest(
-                                      //         amount: '10.00',
-                                      //         displayName: 'Sto cazzo',
-                                      //       ),
-                                      //       cardEnabled: true,
-                                      //     );
-
-                                      //     BraintreeDropInResult result =
-                                      //         await BraintreeDropIn.start(
-                                      //             request);
-                                      //     if (result != null) {
-                                      //       print(result.paymentMethodNonce
-                                      //           .description);
-                                      //       print(result
-                                      //           .paymentMethodNonce.nonce);
-                                      //     }
-
-                                      //     // final http.Response response =
-                                      //     //     await http.post(Uri.tryParse(
-                                      //     //         '$url?payment_method_nonce=${result.paymentMethodNonce}&device_data=${result.deviceData}'));
-
-                                      //     // final payResult =
-                                      //     //     jsonDecode(response.body);
-                                      //     // if (payResult['result'] == 'success')
-                                      //     //   print('Pagamento completato!');
-                                      //   },
-                                      //   // onClicked: () {
-                                      //   //   Navigator.of(context).push(
-                                      //   //     MaterialPageRoute(
-                                      //   //       builder: (BuildContext context) =>
-                                      //   //           PaypalPayment(
-                                      //   //         onFinish: (number) async {
-                                      //   //           // payment done
-                                      //   //           print('order id: ' + number);
-                                      //   //         },
-                                      //   //       ),
-                                      //   //     ),
-                                      //   //   );
-                                      //   //   print("Mi stanno premendo");
-                                      //   // }),
-                                      // )
-                                      ),
+                                      )),
                                 ],
                               ))
                           : SizedBox(

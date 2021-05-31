@@ -1,29 +1,12 @@
-import 'dart:typed_data';
-import 'package:flutter/material.dart';
-import 'package:mime/mime.dart';
-import 'dart:io';
 import 'dart:convert';
-import 'package:http_parser/http_parser.dart';
-import 'package:path_provider/path_provider.dart';
+
+import 'package:elaborato/QRScanner/scanner.dart';
+import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:jwt_decode/jwt_decode.dart';
 
-String userBioVisitor = 'bio';
-String userNameVisitor = 'name';
-String userSurnameVisitor = "surname";
-String basicProfilePic = 'assets/icons/blank-profile-circle.png';
-String profilePicVisitor;
-String userLocationVisitor = 'location';
-String numFollowersVisitor = '0';
-// ignore: avoid_init_to_null
-File userProfilePicVisitor = null;
-String numFollowingVisitor = "5";
-String numPostsVisitor = '2';
-String emailVisitor = "pucio@pucio.it";
-DateTime sinceVisitor;
-DateTime birthDateVisitor;
-
-bool following = false;
+import 'cartPage.dart';
 
 class Product {
   String name;
@@ -41,6 +24,8 @@ class Product {
   buildSubtitle(String s) {}
 }
 
+var token;
+
 List<Product> cart = [];
 
 var TotalAmount;
@@ -48,7 +33,7 @@ var TotalAmount;
 Future<void> verifyToken(qrCode, context) async {
   print(qrCode);
   var jsonData = null;
-  var token = qrCode;
+  token = qrCode;
 
   var _uri = Uri.https('elaboratomacchinette.it', '/verify');
   print(_uri);
@@ -75,20 +60,29 @@ Future<void> verifyToken(qrCode, context) async {
     } on Exception catch (e) {
       print("Errore");
     }
-    // showVerifyResult(response.body, context);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => cartPage()),
+    );
     return true;
   } else {
     print(response.body);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Scanner()),
+    );
     showVerifyResult(response.body, context);
     return false;
   }
 }
 
 showVerifyResult(String result, BuildContext context) async {
+  var data = jsonDecode(result);
+  var message = data['message'];
   showDialog(
       context: context,
       builder: (context) => AlertDialog(
-            content: Text(result),
+            content: Text(message),
           ));
 }
 

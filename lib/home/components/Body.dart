@@ -1,6 +1,4 @@
-import 'package:elaborato/transaction/recentTransactions.dart';
 import 'package:elaborato/home/components/stats_products.dart';
-import 'package:elaborato/utilities/themeStyles.dart';
 import 'package:elaborato/home/components/stats_card.dart';
 import 'package:elaborato/widgets/creditCard.dart';
 import 'package:flutter/material.dart';

@@ -69,9 +69,7 @@ class LoggedInPage extends StatelessWidget {
                       )),
                 ],
                 child: IconButton(
-                  onPressed: () {
-                    // showSearch(context: context, delegate: Search(widget.list));
-                  },
+                  onPressed: () {},
                   icon: Icon(Icons.person),
                 )),
           ],
@@ -84,10 +82,6 @@ class LoggedInPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // CircleAvatar(
-                //         radius: 40,
-                //         backgroundImage: NetworkImage(user.photoUrl),
-                //       ),
                 (user.photoUrl != null
                     ? CircleAvatar(
                         radius: 40,
@@ -123,58 +117,4 @@ class LoggedInPage extends StatelessWidget {
         ),
         bottomNavigationBar: MyBottomNavBar(),
       );
-
-  // @override
-  // Widget build(BuildContext context) => Scaffold(
-  //       appBar: AppBar(
-  //         title: Text('Logged in'),
-  //         centerTitle: true,
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () async {
-  //               await GoogleSignInApi.logout();
-
-  //               Navigator.of(context).pushReplacement(
-  //                 MaterialPageRoute(builder: (context) => LoginScreen()),
-  //               );
-  //             },
-  //             child: Text('Logout'),
-  //           )
-  //         ],
-  //       ),
-  //       body: Container(
-  //         alignment: Alignment.center,
-  //         color: Colors.blueGrey.shade900,
-  //         child: Column(
-  //           mainAxisAlignment: MainAxisAlignment.center,
-  //           children: [
-  //             Text(
-  //               'Profile',
-  //               style: TextStyle(fontSize: 24),
-  //             ),
-  //             SizedBox(
-  //               height: 32,
-  //             ),
-  //             CircleAvatar(
-  //               radius: 40,
-  //               backgroundImage: NetworkImage(user.photoUrl),
-  //             ),
-  //             SizedBox(
-  //               height: 8,
-  //             ),
-  //             Text(
-  //               'Name: ' + user.displayName,
-  //               style: TextStyle(color: Colors.white, fontSize: 24),
-  //             ),
-  //             SizedBox(
-  //               height: 8,
-  //             ),
-  //             Text(
-  //               'Email: ' + user.email,
-  //               style: TextStyle(color: Colors.white, fontSize: 24),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     );
 }

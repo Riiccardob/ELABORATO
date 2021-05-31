@@ -1,6 +1,6 @@
 import 'dart:core';
+import 'package:elaborato/payments/payment_data.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'PaypalServices.dart';
 import 'package:elaborato/token/tokenData.dart';
@@ -15,6 +15,8 @@ class PaypalPayment extends StatefulWidget {
     return PaypalPaymentState();
   }
 }
+
+var orderID;
 
 class PaypalPaymentState extends State<PaypalPayment> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -94,7 +96,7 @@ class PaypalPaymentState extends State<PaypalPayment> {
     String addressZipCode = '23823';
     String addressCountry = 'Italia';
     String addressState = 'Lombardia';
-    String addressPhoneNumber = '+919990119091';
+    String addressPhoneNumber = '+393333333333';
 
     Map<String, dynamic> temp = {
       "intent": "sale",
@@ -162,21 +164,18 @@ class PaypalPaymentState extends State<PaypalPayment> {
                     .executePayment(Uri.parse(executeUrl), payerID, accessToken)
                     .then((id) {
                   widget.onFinish(id);
-                  print("Porcodio1");
-                  Navigator.of(context).pop();
+                  orderID = id;
+                  sendTransaction(id, context);
+                  // Navigator.of(context).pop();
                 });
               } else {
-                print("Porcodio2");
                 Navigator.of(context).pop();
               }
-              print("Porcodio3");
               Navigator.of(context).pop();
             }
             if (request.url.contains(cancelURL)) {
-              print("Porcodio4");
               Navigator.of(context).pop();
             }
-            print("Porcodio5");
             return NavigationDecision.navigate;
           },
         ),

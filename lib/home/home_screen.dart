@@ -1,18 +1,12 @@
-import 'package:elaborato/home/components/stats_card.dart';
 import 'package:elaborato/profile/logged_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:elaborato/SignIn-Up/login_screen.dart';
 import 'package:elaborato/SignIn-Up/api/google_signin_api.dart';
 import 'package:elaborato/bottomBar/my_bottom_nav_bar.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:elaborato/constants.dart';
 import 'package:focused_menu/focused_menu.dart';
-
 import 'components/Body.dart';
-import '../transaction/recentTransactions.dart';
 
 SharedPreferences sharedPreferences;
 
@@ -23,25 +17,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String qrCode = 'Unknown';
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   checkLoginState();
-  // }
-
-  // checkLoginState() async {
-  //   sharedPreferences = await SharedPreferences.getInstance();
-  //   if (!await isLogged()) {
-  //     print("Non e' loggato");
-  //     Navigator.of(context).pushAndRemoveUntil(
-  //         MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
-  //         (Route<dynamic> route) => false);
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -66,12 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
             fontWeight: FontWeight.w800,
           ),
         ),
-        // title: Image.asset(
-        //   "assets/icons/logowhite.png",
-        //   fit: BoxFit.contain,
-        //   height: global_height * 0.55,
-        //   width: global_width * 0.55,
-        // ),
         toolbarHeight: 70,
         actions: <Widget>[
           FocusedMenuHolder(
@@ -111,25 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
               ],
               child: IconButton(
-                onPressed: () {
-                  // showSearch(context: context, delegate: Search(widget.list));
-                },
+                onPressed: () {},
                 icon: Icon(Icons.person),
               )),
         ],
       ),
       body: Body(),
       bottomNavigationBar: MyBottomNavBar(),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: () => scanQRCode(),
-      //   isExtended: true,
-      //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      //   icon: Icon(
-      //     Icons.add_circle_outlined,
-      //     color: Colors.white,
-      //   ),
-      //   label: Text('Scan QR-CODE'),
-      // ),
     );
   }
 }

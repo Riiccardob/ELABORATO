@@ -1,10 +1,6 @@
 import 'package:elaborato/QRScanner/scanner.dart';
 import 'package:elaborato/transaction/transactionPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:focused_menu/focused_menu.dart';
-import 'package:focused_menu/modals.dart';
-import 'package:elaborato/SignIn-Up/login_screen.dart';
 import 'package:elaborato/constants.dart';
 import 'package:elaborato/home/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -116,7 +112,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         this.qrCode = qrCode;
       });
     } on PlatformException {
-      qrCode = 'Failed to get platform version.';
+      qrCode = 'Impossibile ottenere la versione della piattaforma.';
     }
   }
 }

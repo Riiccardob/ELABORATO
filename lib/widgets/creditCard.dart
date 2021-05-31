@@ -1,9 +1,7 @@
 import 'package:elaborato/SignIn-Up/login_screen.dart';
-import 'package:elaborato/utilities/themeColors.dart';
 import 'package:elaborato/utilities/themeStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:elaborato/profile/logged_in_page.dart';
 
 class CreditCard extends StatefulWidget {
   @override

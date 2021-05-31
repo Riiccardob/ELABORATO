@@ -1,7 +1,5 @@
-import 'package:elaborato/utilities/themeColors.dart';
 import 'package:elaborato/utilities/themeStyles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
 
 class StatsProducts extends StatelessWidget {
   const StatsProducts({Key key}) : super(key: key);

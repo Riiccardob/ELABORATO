@@ -1,15 +1,6 @@
-import 'package:elaborato/SignIn-Up/login_screen.dart';
 import 'package:elaborato/bottomBar/my_bottom_nav_bar.dart';
 import 'package:elaborato/transaction/recentTransactions.dart';
-import 'package:elaborato/utilities/themeColors.dart';
-import 'package:elaborato/utilities/themeStyles.dart';
-import 'package:elaborato/widgets/addNote.dart';
-import 'package:elaborato/widgets/cardInPage.dart';
-import 'package:elaborato/widgets/otherDetailsDivider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:focused_menu/focused_menu.dart';
-import 'package:focused_menu/modals.dart';
 
 class TransactionPage extends StatefulWidget {
   final String title;
@@ -56,12 +47,6 @@ class _TransactionPageState extends State<TransactionPage> {
             fontWeight: FontWeight.w800,
           ),
         ),
-        // title: Image.asset(
-        //   "assets/icons/logowhite.png",
-        //   fit: BoxFit.contain,
-        //   height: global_height * 0.55,
-        //   width: global_width * 0.55,
-        // ),
         toolbarHeight: 70,
       ),
       body: SingleChildScrollView(
@@ -72,22 +57,6 @@ class _TransactionPageState extends State<TransactionPage> {
         ),
       ),
       bottomNavigationBar: MyBottomNavBar(),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: () {
-      //     // Navigator.push(
-      //     //   context,
-      //     //   MaterialPageRoute(builder: (context) => UploadPost()),
-      //     // );
-      //     // print("Mi stanno premendo");
-      //   },
-      //   isExtended: true,
-      //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      //   icon: Icon(
-      //     Icons.add_circle_outlined,
-      //     color: Colors.white,
-      //   ),
-      //   label: Text('Scan QR-CODE'),
-      // ),
     );
   }
 }
