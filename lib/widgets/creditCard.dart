@@ -1,7 +1,9 @@
+import 'package:elaborato/SignIn-Up/login_screen.dart';
 import 'package:elaborato/utilities/themeColors.dart';
 import 'package:elaborato/utilities/themeStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:elaborato/profile/logged_in_page.dart';
 
 class CreditCard extends StatefulWidget {
   @override
@@ -17,7 +19,8 @@ class _CreditCardState extends State<CreditCard> {
         height: 216,
         width: 380,
         decoration: BoxDecoration(
-          color: ThemeColors.black,
+          // color: ThemeColors.black,
+          color: Colors.grey,
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Padding(
@@ -33,7 +36,7 @@ class _CreditCardState extends State<CreditCard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('5.720,30 €', style: ThemeStyles.cardMoney),
+                    Text(user.displayName, style: ThemeStyles.cardMoney),
                     SvgPicture.asset('assets/hide-icon.svg'),
                   ],
                 ),
@@ -46,7 +49,7 @@ class _CreditCardState extends State<CreditCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Magent Black', style: ThemeStyles.cardDetails),
+                    Text('Visa', style: ThemeStyles.cardDetails),
                     Row(
                       children: [
                         Padding(

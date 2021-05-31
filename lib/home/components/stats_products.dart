@@ -32,14 +32,6 @@ class StatsProducts extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(32.0),
                       color: Color.fromRGBO(57, 106, 252, 1),
-                      // gradient: LinearGradient(
-                      //     begin: Alignment.centerLeft,
-                      //     end: Alignment.centerRight,
-
-                      //     colors: [
-                      //       Color.fromRGBO(57, 106, 252, 1),
-                      //       Color.fromRGBO(41, 72, 255, 1),
-                      //     ]),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -77,14 +69,6 @@ class StatsProducts extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32.0),
                         color: Color.fromRGBO(57, 106, 252, 1),
-                        // gradient: LinearGradient(
-                        //     begin: Alignment.centerLeft,
-                        //     end: Alignment.centerRight,
-
-                        //     colors: [
-                        //       Color.fromRGBO(57, 106, 252, 1),
-                        //       Color.fromRGBO(41, 72, 255, 1),
-                        //     ]),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -123,14 +107,6 @@ class StatsProducts extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32.0),
                         color: Color.fromRGBO(57, 106, 252, 1),
-                        // gradient: LinearGradient(
-                        //     begin: Alignment.centerLeft,
-                        //     end: Alignment.centerRight,
-
-                        //     colors: [
-                        //       Color.fromRGBO(57, 106, 252, 1),
-                        //       Color.fromRGBO(41, 72, 255, 1),
-                        //     ]),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

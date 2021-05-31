@@ -1,5 +1,3 @@
-import 'package:elaborato/QRScanner/qr_scan_page%20copy.dart';
-import 'package:elaborato/QRScanner/qr_scan_page.dart';
 import 'package:elaborato/QRScanner/scanner.dart';
 import 'package:elaborato/transaction/transactionPage.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +7,6 @@ import 'package:focused_menu/modals.dart';
 import 'package:elaborato/SignIn-Up/login_screen.dart';
 import 'package:elaborato/constants.dart';
 import 'package:elaborato/home/home_screen.dart';
-import 'package:elaborato/security/token.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';

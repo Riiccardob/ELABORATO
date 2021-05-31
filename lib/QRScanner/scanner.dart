@@ -1,13 +1,40 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:ffi';
+import 'dart:io';
 
+import 'package:elaborato/bottomBar/my_bottom_nav_bar.dart';
 import 'package:elaborato/constants.dart';
+import 'package:elaborato/payments/PaypalPayment.dart';
+import 'package:elaborato/token/cartPage.dart';
+import 'package:elaborato/token/tokenData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'button_widget.dart';
 import 'package:http/http.dart' as http;
+import 'package:jwt_decode/jwt_decode.dart';
 
 import '../main.dart';
+
+// class Product {
+//   String name;
+//   String price;
+//   String quantity;
+
+//   Product(String name, String price, String quantity) {
+//     this.name = name;
+//     this.price = price;
+//     this.quantity = quantity;
+//   }
+
+//   buildTitle(String name) {}
+
+//   buildSubtitle(String s) {}
+// }
+
+// List<Product> chart = [];
+// List<Widget> widChart = [];
 
 class Scanner extends StatefulWidget {
   @override
@@ -17,115 +44,69 @@ class Scanner extends StatefulWidget {
 class _ScannerState extends State<Scanner> {
   String qrCode = 'Unknown';
 
-  verifyToken(String token) async {
-    print(token);
-    var _uri = Uri.https('api.elaboratomacchinette.it', '/verify');
-    print(_uri);
-    var jsonData = null;
-    var response = await http.get(_uri, headers: {"token": token});
-
-    if (response.statusCode == 200) {
-      jsonData = json.decode(response.body);
-      print(jsonData);
-      try {
-        //starta il pagamento
-      } on Exception catch (e) {
-        print("Errore");
-      }
-
-      showVerifyResult(response.body);
-      return true;
-    } else {
-      print(response.body);
-      showVerifyResult(response.body);
-      return false;
-    }
-  }
-
-  showVerifyResult(String result) async {
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              content: Text(result),
-            ));
-  }
-
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          //  backgroundColor: Colors.white,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [
-                  Color.fromRGBO(245, 56, 3, 1),
-                  Color.fromRGBO(245, 208, 32, 1),
-                ]),
+        appBar: AppBar(
+          flexibleSpace: Container(
+            //  backgroundColor: Colors.white,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color.fromRGBO(245, 56, 3, 1),
+                    Color.fromRGBO(245, 208, 32, 1),
+                  ]),
+            ),
           ),
-        ),
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text(
-          'Scanner',
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.w800,
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          title: Text(
+            'Scanner',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w800,
+            ),
           ),
+          toolbarHeight: 70,
         ),
-        // title: Image.asset(
-        //   "assets/icons/logowhite.png",
-        //   fit: BoxFit.contain,
-        //   height: global_height * 0.55,
-        //   width: global_width * 0.55,
-        // ),
-        toolbarHeight: 70,
-      ),
-      body: qrCode == 'Unknown' || qrCode == '-1'
-          // firstUse == true
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ButtonWidget(
-                    text: 'Start QR scan',
-                    onClicked: () => scanQRCode(),
-                  ),
-                ],
-              ),
-            )
-          :
-          // verifyToken(qrCode)
-          Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Scan Result',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+        body: qrCode == 'Unknown' || qrCode == '-1'
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ButtonWidget(
+                      text: 'Scannerizza un QR',
+                      onClicked: () => scanQRCode(),
                     ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    '$qrCode',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  ],
+                ),
+              )
+            : Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ButtonWidget(
+                      text: 'Visualizza il carrello',
+                      onClicked: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => cartPage()),
+                        );
+                      },
                     ),
-                  ),
-                  SizedBox(height: 72),
-                  ButtonWidget(
-                    text: 'Start QR scan',
-                    onClicked: () => scanQRCode(),
-                  ),
-                ],
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ButtonWidget(
+                      text: 'Scannerizza un QR',
+                      onClicked: () => scanQRCode(),
+                    ),
+                  ],
+                ),
               ),
-            ));
+        bottomNavigationBar: MyBottomNavBar(),
+      );
 
   Future<void> scanQRCode() async {
     try {
@@ -142,6 +123,7 @@ class _ScannerState extends State<Scanner> {
       setState(() {
         this.qrCode = qrCode;
       });
+      verifyToken(qrCode, context);
     } on PlatformException {
       qrCode = 'Failed to get platform version.';
     }

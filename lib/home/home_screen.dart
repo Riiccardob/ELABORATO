@@ -1,8 +1,9 @@
 import 'package:elaborato/home/components/stats_card.dart';
+import 'package:elaborato/profile/logged_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:elaborato/SignIn-Up/login_screen.dart';
+import 'package:elaborato/SignIn-Up/api/google_signin_api.dart';
 import 'package:elaborato/bottomBar/my_bottom_nav_bar.dart';
-import 'package:elaborato/security/token.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:focused_menu/modals.dart';
@@ -11,7 +12,6 @@ import 'package:elaborato/constants.dart';
 import 'package:focused_menu/focused_menu.dart';
 
 import 'components/Body.dart';
-import 'components/cards.dart';
 import '../transaction/recentTransactions.dart';
 
 SharedPreferences sharedPreferences;
@@ -82,20 +82,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               menuItems: <FocusedMenuItem>[
-                // FocusedMenuItem(
-                //     title: Text("Change Profile"),
-                //     onPressed: () {},
-                //     trailingIcon: Icon(Icons.supervisor_account_rounded)),
+                FocusedMenuItem(
+                    title: Text("Profile"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoggedInPage(user: user)),
+                      );
+                    },
+                    trailingIcon: Icon(Icons.supervisor_account_rounded)),
                 FocusedMenuItem(
                     backgroundColor: Color.fromRGBO(245, 56, 3, 1),
                     title: Text(
                       "Logout",
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () {
-                      logout();
-                      Navigator.push(
-                        context,
+                    onPressed: () async {
+                      await GoogleSignInApi.logout();
+
+                      Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
@@ -113,16 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Body(),
-      // Column(
-      //   children: <Widget>[
-      //     CardsList(),
-      //     Padding(
-      //       padding: const EdgeInsets.only(top: 10),
-      //       child: StatsCards(),
-      //     ),
-      //     RecentTransactions(),
-      //   ],
-      // ),
       bottomNavigationBar: MyBottomNavBar(),
       // floatingActionButton: FloatingActionButton.extended(
       //   onPressed: () => scanQRCode(),

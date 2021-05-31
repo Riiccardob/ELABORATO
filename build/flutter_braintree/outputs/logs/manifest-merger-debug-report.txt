@@ -1,0 +1,27 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:2:1-11:12
+INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:2:1-11:12
+INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:2:1-11:12
+	package
+		ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:3:5-44
+		INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml
+		INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:5:5-9:19
+activity#com.example.flutter_braintree.FlutterBraintreeCustom
+ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:6:9-8:20
+	android:theme
+		ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:7:13-59
+	android:name
+		ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml:6:19-57
+uses-sdk
+INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml
+INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml
+		ADDED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml
+		INJECTED from G:\Flutter\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_braintree-1.2.1\android\src\main\AndroidManifest.xml

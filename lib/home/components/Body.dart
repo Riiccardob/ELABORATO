@@ -1,8 +1,8 @@
-import 'package:elaborato/home/components/cards.dart';
 import 'package:elaborato/transaction/recentTransactions.dart';
 import 'package:elaborato/home/components/stats_products.dart';
 import 'package:elaborato/utilities/themeStyles.dart';
 import 'package:elaborato/home/components/stats_card.dart';
+import 'package:elaborato/widgets/creditCard.dart';
 import 'package:flutter/material.dart';
 
 final kInnerDecoration = BoxDecoration(
@@ -33,7 +33,7 @@ class Body extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          CardsList(),
+          CreditCard(),
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: StatsCards(),

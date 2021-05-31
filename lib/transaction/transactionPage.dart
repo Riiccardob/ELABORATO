@@ -3,7 +3,6 @@ import 'package:elaborato/bottomBar/my_bottom_nav_bar.dart';
 import 'package:elaborato/transaction/recentTransactions.dart';
 import 'package:elaborato/utilities/themeColors.dart';
 import 'package:elaborato/utilities/themeStyles.dart';
-import 'package:elaborato/security/token.dart';
 import 'package:elaborato/widgets/addNote.dart';
 import 'package:elaborato/widgets/cardInPage.dart';
 import 'package:elaborato/widgets/otherDetailsDivider.dart';
